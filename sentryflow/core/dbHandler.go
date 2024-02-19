@@ -1,4 +1,4 @@
-package main
+package core
 
 import (
 	"database/sql"
@@ -94,17 +94,4 @@ func InitMetricsDB() {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func main() {
-	InitMetricsDB()
-
-	metricsDB.insertMetric("/product/car", 1)
-	// metricsDB.insertMetric("/product/car", 3)
-
-	metricsDB.updateMetric("/product/car", 5)
-
-	tempMetric, _ := metricsDB.seleteMetric("/product/car")
-
-	fmt.Printf("%s, %d\n", tempMetric.api, tempMetric.count)
 }
